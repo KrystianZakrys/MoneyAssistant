@@ -1,5 +1,6 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:money_assistant/repositories/account.repository.dart';
 import 'context.dart';
 import 'custom_card.dart';
 import 'models/account.dart';
@@ -35,8 +36,7 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
-
-  final dbContext = Context.instance;
+  final accountRepo = AccountRepository.instance;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -50,12 +50,12 @@ class MyHomePage extends StatefulWidget {
     account.isCountedInTotal = 0;
     account.type = 'Bank';
 
-    final Account accountEntity = await dbContext.upsertAccount(account);
+    final Account accountEntity = await accountRepo.upsertAccount(account);
     print('inserted row id: $accountEntity.id');
   }
 
   void _query() async {
-    final allRows = await dbContext.fetchAccounts(10);
+    final allRows = await accountRepo.fetchAccounts(10);
     print('query all rows:');
     allRows.forEach((row) => print(row.name));
   }
