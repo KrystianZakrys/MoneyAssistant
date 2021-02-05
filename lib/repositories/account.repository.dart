@@ -9,7 +9,7 @@ class AccountRepository {
   final dbContext = Context.instance;
   static final AccountRepository instance = AccountRepository._();
 
-  Future<Account> upsertAccount(Account entity) async {
+  Future<Account> upsert(Account entity) async {
     Database db = await dbContext.db;
     var count = 0;
     if (entity.id != null) {
@@ -27,7 +27,7 @@ class AccountRepository {
     return entity;
   }
 
-  Future<Account> fetchAccount(int id) async {
+  Future<Account> fetch(int id) async {
     Database db = await dbContext.db;
     List<Map> results = await db.query("Account",
         columns: Account.columns, where: "Id = ?", whereArgs: [id]);
@@ -37,7 +37,7 @@ class AccountRepository {
     return entity;
   }
 
-  Future<List<Account>> fetchAccounts(int limit) async {
+  Future<List<Account>> fetchAll(int limit) async {
     Database db = await dbContext.db;
     List<Map> results = await db.query("Account",
         columns: Account.columns, limit: limit, orderBy: "Id DESC");
