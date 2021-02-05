@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../context.dart';
-import '../models/expense_category.dart';
+import '../providers/context.dart';
+import '../../models/expense_category.dart';
 
 class ExpenseCategoryRepository {
   ExpenseCategoryRepository._();

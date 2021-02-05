@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../context.dart';
-import '../models/income.dart';
+import '../providers/context.dart';
+import '../../models/income.dart';
 
 class IncomeRepository {
   IncomeRepository._();

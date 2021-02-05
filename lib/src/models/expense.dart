@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:money_assistant/models/expense_category.dart';
+import 'package:money_assistant/src/models/expense_category.dart';
 
 import 'account.dart';
 
-class Income {
-  Income();
+class Expense {
+  Expense();
 
   int id;
   String name;
@@ -44,7 +44,7 @@ class Income {
   }
 
   static fromMap(Map map) {
-    Income account = new Income();
+    Expense account = new Expense();
     account.id = map["Id"];
     account.name = map["Name"];
     account.description = map["Description"];

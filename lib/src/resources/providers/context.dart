@@ -1,13 +1,13 @@
 import 'dart:io';
-import 'package:money_assistant/models/income.dart';
+import 'package:money_assistant/src/models/income.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'models/account.dart';
-import 'models/expense.dart';
-import 'models/expense_category.dart';
-import 'models/income_category.dart';
+import '../../models/account.dart';
+import '../../models/expense.dart';
+import '../../models/expense_category.dart';
+import '../../models/income_category.dart';
 
 class Context {
   static final _databaseName = "MoneyAssistant";

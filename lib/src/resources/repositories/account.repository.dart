@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../context.dart';
-import '../models/account.dart';
+import '../providers/context.dart';
+import '../../models/account.dart';
 
 class AccountRepository {
   AccountRepository._();
@@ -39,8 +39,15 @@ class AccountRepository {
 
   Future<List<Account>> fetchAll(int limit) async {
     Database db = await dbContext.db;
-    List<Map> results = await db.query("Account",
-        columns: Account.columns, limit: limit, orderBy: "Id DESC");
+    List<Map> results = [];
+
+    if (limit == 0) {
+      results = await db.query("Account",
+          columns: Account.columns, orderBy: "Id DESC");
+    } else {
+      results = await db.query("Account",
+          columns: Account.columns, limit: limit, orderBy: "Id DESC");
+    }
 
     List<Account> entities = [];
     results.forEach((result) {
